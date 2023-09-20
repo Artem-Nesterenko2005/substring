@@ -72,7 +72,9 @@ int main()
     {
         char string1[100];
         char string2[100];
+        printf("Enter first string ");
         fgets(string1, 99, stdin);
+        printf("Enter second string ");
         fgets(string2, 99, stdin);
         int result = algorithm(string1, string2);
         printf("Number of occurrences %d", result);
