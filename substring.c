@@ -50,9 +50,9 @@ int main()
     }
     char mainString[LIMITATION_LENGTH_STRING] ="";
     char subString[LIMITATION_LENGTH_STRING] = "";
-    printf("Enter first string ");
+    printf("Enter first string, no more than 100 symbols ");
     fgets(mainString, 99, stdin);
-    printf("Enter second string ");
+    printf("Enter second string, no more than 100 symbols ");
     fgets(subString, 99, stdin);
     int result = calculatingOccurrencesOfSubstrings(mainString, subString);
     printf("Number of occurrences %d", result);
