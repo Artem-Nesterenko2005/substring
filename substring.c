@@ -1,7 +1,6 @@
 ﻿#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <time.h>
 
 #define LIMITATION_LENGTH_STRING 100
 
@@ -32,6 +31,7 @@ int calculatingOccurrencesOfSubstrings(char mainString[], char subString[])
     }
     return numberOccurrences;
 }
+
 int testOfProgramm()
 {
     char mainString[LIMITATION_LENGTH_STRING] = "123123\n";
