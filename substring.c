@@ -9,12 +9,12 @@ int calculatingOccurrencesOfSubstrings(char mainString[], char subString[])
     int const lengthMainString = strlen(mainString);
     int const lengthSubString = strlen(subString);
     int numberOccurrences = 0;
-    for (int elementNumber1 = 0; elementNumber1 < lengthMainString; ++elementNumber1)
+    for (int elementNumberMainString = 0; elementNumberMainString < lengthMainString; ++elementNumberMainString)
     {
         int counter = 0;
-        for (int elementNumber2 = 0; elementNumber2 < lengthSubString; ++elementNumber2)
+        for (int elementNumberSubString = 0; elementNumberSubString < lengthSubString; ++elementNumberSubString)
         {
-            if (mainString[elementNumber1 + elementNumber2] == subString[elementNumber2])
+            if (mainString[elementNumberMainString + elementNumberSubString] == subString[elementNumberSubString])
             {
                 ++counter;
             }
