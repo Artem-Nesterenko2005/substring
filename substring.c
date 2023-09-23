@@ -3,20 +3,19 @@
 #include <stdio.h>
 #include <time.h>
 
-#define LIMITATION1 20
-#define LIMITATION2 4
+#define LIMITATION_LENGTH_STRING 100
 
-int algorithm (char string1[], char string2[])
+int calculatingOccurrencesOfSubstrings(char mainString[], char subString[])
 {
-    int length1 = strlen(string1);
-    int length2 = strlen(string2);
-    int result = 0;
-    for (int elementNumber1 = 0; elementNumber1 < length1; ++elementNumber1)
+    int const lengthMainString = strlen(mainString);
+    int const lengthSubString = strlen(subString);
+    int numberOccurrences = 0;
+    for (int elementNumber1 = 0; elementNumber1 < lengthMainString; ++elementNumber1)
     {
         int counter = 0;
-        for (int elementNumber2 = 0; elementNumber2 < length2; ++elementNumber2)
+        for (int elementNumber2 = 0; elementNumber2 < lengthSubString; ++elementNumber2)
         {
-            if (string1[elementNumber1 + elementNumber2] == string2[elementNumber2])
+            if (mainString[elementNumber1 + elementNumber2] == subString[elementNumber2])
             {
                 ++counter;
             }
@@ -24,63 +23,37 @@ int algorithm (char string1[], char string2[])
             {
                 break;
             }
-            if (counter == length2 - 1)
+            if (counter == lengthSubString - 1)
             {
-                ++result;
+                ++numberOccurrences;
                 break;
             }
         }
     }
-    return result;
+    return numberOccurrences;
 }
-
-int random()
+int testOfProgramm()
 {
-    char alphabets[] = { '1','2','3','4','5','6','7','8','9','0' };
-    srand(time(NULL));
-    char string1[20];
-    char string2[4];
-    int counter1 = 0;
-    int counter2 = 0;
-    while (counter1 < 20)
-    {
-        int symbol = rand() % 10;
-        string1[counter1] = alphabets[symbol];
-        ++counter1;
-    }
-    while (counter2 < 4)
-    {
-        int symbol = rand() % 10;
-        string2[counter2] = alphabets[symbol];
-        ++counter2;
-    }
-    int result = algorithm(string1, string2);
-    if (result)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    char mainString[LIMITATION_LENGTH_STRING] = "123123\n";
+    char subString[LIMITATION_LENGTH_STRING] = "123\n";
+    int testResult = calculatingOccurrencesOfSubstrings(mainString, subString);
+    return testResult;
 }
 
 int main()
-{    
-    int test = random();
-    if (test == 1)
+{
+    int test = testOfProgramm();
+    if (!test)
     {
-        char string1[100];
-        char string2[100];
-        printf("Enter first string ");
-        fgets(string1, 99, stdin);
-        printf("Enter second string ");
-        fgets(string2, 99, stdin);
-        int result = algorithm(string1, string2);
-        printf("Number of occurrences %d", result);
+        printf("Test is error: the main string does not contain a substring");
+        return 1;
     }
-    else
-    {
-        printf("Error");
-    }
+    char mainString[LIMITATION_LENGTH_STRING] ="";
+    char subString[LIMITATION_LENGTH_STRING] = "";
+    printf("Enter first string ");
+    fgets(mainString, 99, stdin);
+    printf("Enter second string ");
+    fgets(subString, 99, stdin);
+    int result = calculatingOccurrencesOfSubstrings(mainString, subString);
+    printf("Number of occurrences %d", result);
 }
